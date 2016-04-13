@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    ul
+        each topic in topics
+            li
+                a(href=topic.href)
+                    span= topic.title
+                
+    
+    
