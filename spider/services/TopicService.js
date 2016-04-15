@@ -86,9 +86,14 @@ function getTopics(callback) {
                                 console.log('final: ');
                                 console.log(topics);
 
-                                TopicDao.setTopics(topics);
+                                TopicDao.setTopics(topics, function(err, res) {
+                                    if (err) {
+                                        callback(err);
+                                    } else {
+                                        callback(null, topics);
+                                    }
+                                });
 
-                                callback(null, topics);
                             }
                         });
                     }

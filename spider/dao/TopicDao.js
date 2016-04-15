@@ -11,6 +11,12 @@ module.exports = {
     },
     
     setTopics: function (topics, callback) {
-        redis.setex(KEY_OF_TOPIC, EXPIRED_TIME, JSON.stringify(topics), callback);
+        try {
+            redis.setex(KEY_OF_TOPIC, EXPIRED_TIME, JSON.stringify(topics), callback);
+        } catch (err) {
+            console.log('redis.setex: ', err);
+            callback(err, null);
+        }
+        
     }
 };

@@ -1,6 +1,6 @@
-var redis = require('redis');
+var Redis = require('ioredis');
 
-var client = redis.createClient({
+var client = new Redis({
     host: '192.168.0.2'
 });
 
