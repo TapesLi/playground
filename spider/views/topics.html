@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<ul>
+    {% for topic in topics %}
+    <li>
+        <a href="{{ topic.href }}">
+            <span>{{ topic.title }}</span>
+        </a>
+    </li>
+    {% else %}
+    <li>Oh...There has no topics.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
+    
+    
