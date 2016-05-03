@@ -1,0 +1,2 @@
+#!/bin/sh
+ping -c 1 www.baidu.com
