@@ -7,8 +7,11 @@
 var child_process = require('child_process');
 
 const p = child_process.execFile(
-    'ps',
-    ['-ae'],
+    'node',
+    ['child.js', 'a', 'b'],
+    {
+        cwd: ''
+    },
     (err, stdout, stderr) => {
         if (err) {
             console.log('err: ', err, err.code, err.signal);

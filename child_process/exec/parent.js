@@ -7,7 +7,10 @@
 var child_process = require('child_process');
 
 const p = child_process.exec(
-    'ps -ae',
+    'node child.js a b',
+    {
+        cwd: 'exec'
+    },
     (err, stdout, stderr) => {
         if (err) {
             console.log('err: ', err, err.code, err.signal);
