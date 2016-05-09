@@ -10,7 +10,7 @@ require('isomorphic-fetch');
 let querystring = require('querystring');
 let BikeStatusDAO = require('./DAO/BikeStatusDAO');
 
-const CRAW_INTERVAL = 5 * 1000;
+const CRAW_INTERVAL = 60 * 1000;
 const URLBikeStatus = 'http://nnbike.citycome.com/Home/BikeStatus2';
 
 let GLOBAL_gLastUpdateTime = 0;
