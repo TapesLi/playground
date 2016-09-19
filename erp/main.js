@@ -8,9 +8,7 @@ const fs = require('fs');
 const parse = require('csv-parse');
 const transform = require('stream-transform');
 const path = require('path');
-const Iconv = require('iconv').Iconv;
-
-var iconv = new Iconv('SHIFT_JIS', 'UTF-8');
+const iconv = require('iconv-lite');
 
 var parser = parse({delimiter: ','});
 var input = fs.createReadStream(path.join(__dirname, '20168.csv'));
@@ -20,4 +18,4 @@ var transformer = transform(function (record, callback) {
     // }, 500);
 }, {parallel: 10});
 
-input.pipe(iconv).pipe(parser).pipe(transformer).pipe(process.stdout);
+input.pipe(iconv.decodeStream('Shift_JIS')).pipe(parser).pipe(transformer).pipe(process.stdout);
