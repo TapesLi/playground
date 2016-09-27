@@ -11,7 +11,9 @@
   "dependencies": {
     "csv": "^1.1.0",
     "csv-parse": "^1.1.7",
-    "iconv": "^2.2.1",
-    "stream-transform": "^0.1.1"
+    "csv-stringify": "^1.0.4",
+    "iconv-lite": "^0.4.13",
+    "stream-transform": "^0.1.1",
+    "underscore": "^1.8.3"
   }
 }
