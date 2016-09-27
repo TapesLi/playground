@@ -3,12 +3,13 @@
  */
 "use strict";
 
-let redis = require('../utils/redis');
+const redis = require('../utils/redis');
+const sqlite3 = require('../utils/sqlite3');
 
 const KEY_OF_BIKE_STATUS = '__BikeStatus__';
 
 module.exports = {
-    add: function(bikeStatusList, timestamp, callback) {
+    add: function (bikeStatusList, timestamp, callback) {
 
         bikeStatusList.forEach(function (bikeStatus) {
 
@@ -34,6 +35,22 @@ module.exports = {
                 }
             });
 
+        });
+
+    },
+
+    addTest: function (bikeStatusList, timestamp, callback) {
+
+        let db = sqlite3.getDatabase();
+
+        db.serialize(function () {
+            let stmt = db.prepare("INSERT INTO BIKE_STATUS (TIME, NO, E, T, A, R) VALUES (?, ?, ?, ?, ?, ?)");
+
+            bikeStatusList.forEach(function (bikeStatus) {
+                stmt.run(timestamp, bikeStatus['NO'], bikeStatus['E'], bikeStatus['T'], bikeStatus['A'], bikeStatus['R']);
+            });
+
+            stmt.finalize(callback);
         });
 
     }

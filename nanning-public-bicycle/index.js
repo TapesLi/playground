@@ -52,7 +52,9 @@ function craw() {
 
                         GLOBAL_gLastUpdateTime = result.gLastUpdateTime;
 
-                        BikeStatusDAO.add(result.gBikeStatus, timestamp);
+                        BikeStatusDAO.addTest(result.gBikeStatus, timestamp, function () {
+                            console.log('finished addTest: ', result.gBikeStatus.length);
+                        });
                     } catch (e) {
                         console.error('resultFun error: ', error);
                     }
