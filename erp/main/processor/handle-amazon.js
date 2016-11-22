@@ -25,6 +25,11 @@ function process (orders) {
         if (orderNumbers.length > 1) {
             orderNumbers.forEach((orderNumber, index) => {
 
+                // 只需要处理一个 + 就好了
+                if (index >= 2) {
+                    return;
+                }
+
                 let _order = utils.deepCopy(order);
 
                 orderNumber = cutOutFBA(orderNumber);
